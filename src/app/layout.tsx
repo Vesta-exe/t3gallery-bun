@@ -9,6 +9,7 @@ import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 import React from "react";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "~/components/theme-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,7 +35,13 @@ export default function RootLayout({
       <NextSSRPlugin 
       routerConfig={extractRouterConfig(ourFileRouter)}
       />
-      <body className={`font-sans ${inter.variable} dark`}>
+      <body className={`font-sans ${inter.variable}`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
         <div className="h-screen grid grid-rows-[auto,1fr]">
           <TopNav />
           <main className="overflow-y-scroll">{children}</main>
@@ -42,6 +49,7 @@ export default function RootLayout({
         {modal}
         <div id="modal-root" />
         <Toaster />
+        </ThemeProvider>
       </body>
     </html>
     </ClerkProvider>
