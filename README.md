@@ -11,7 +11,9 @@
 - [x] "taint" (server only)
 - [x] Use Next/Image component
 - [x] Error management (w/ Sentry)
-- [ ] Routing/image page (parallel route)
+- [x] Routing/image page (parallel route)
+- [x] Update upload button to be less cringe
+- [ ] ShadUIify (specifically toasts)
 - [ ] Delete button (w/ server actions)
 - [ ] Analytics (posthog)
 - [ ] Ratelimitting (upstash)
