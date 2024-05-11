@@ -10,6 +10,7 @@ import { ourFileRouter } from "./api/uploadthing/core";
 import React from "react";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "~/components/theme-provider";
+import { CSPostHogProvider } from "./_analytics/provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
+      <CSPostHogProvider>
     <html lang="en">
       <NextSSRPlugin 
       routerConfig={extractRouterConfig(ourFileRouter)}
@@ -38,7 +40,7 @@ export default function RootLayout({
       <body className={`font-sans ${inter.variable}`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
@@ -52,6 +54,7 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
+    </CSPostHogProvider>
     </ClerkProvider>
   );
 }
