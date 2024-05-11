@@ -16,4 +16,11 @@
 - [x] ShadUIify (specifically toasts)
 - [x] Analytics (posthog)
 - [x] Delete button (w/ server actions)
-- [ ] Ratelimitting (upstash)
+- [x] Ratelimitting (upstash)
+
+## Additional Challenges
+- [ ] Fix page layout for images of different resolutions
+- [ ] "Selecting" images on the gallery page (zustand)
+- [ ] "inifinte scroll"
+- [ ] Folders/ablums (database)
+- [ ] Restyle the UI
