@@ -1,6 +1,9 @@
-import "server-only";
-import {db} from "./db"
 import { auth } from "@clerk/nextjs/server";
+import { and, eq } from "drizzle-orm";
+import { redirect } from "next/navigation";
+import "server-only";
+import { db } from "./db";
+import { images } from "./db/schema";
 
 export async function getMyImages() {
 
@@ -28,4 +31,15 @@ export async function getImage(id: number) {
   if (user.userId !== image.userId) throw new Error("Unauthorized");
 
   return image;
+}
+
+export async function deleteImage(id: number) {
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorized");
+
+  await db
+  .delete(images)
+  .where(and(eq(images.id, id), eq(images.userId, user.userId)));
+
+  redirect("/");
 }

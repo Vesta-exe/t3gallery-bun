@@ -1,16 +1,17 @@
-import "~/styles/globals.css";
 import "@uploadthing/react/styles.css";
-import { ClerkProvider } from "@clerk/nextjs";
-import {TopNav} from "./_components/topnav";
+import "~/styles/globals.css";
 
-import { Inter } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
+
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
-import { extractRouterConfig } from "uploadthing/server";
-import { ourFileRouter } from "./api/uploadthing/core";
+import { Inter } from "next/font/google";
 import React from "react";
 import { Toaster } from "sonner";
+import { extractRouterConfig } from "uploadthing/server";
 import { ThemeProvider } from "~/components/theme-provider";
 import { CSPostHogProvider } from "./_analytics/provider";
+import { TopNav } from "./_components/topnav";
+import { ourFileRouter } from "./api/uploadthing/core";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,28 +34,28 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <CSPostHogProvider>
-    <html lang="en">
-      <NextSSRPlugin 
-      routerConfig={extractRouterConfig(ourFileRouter)}
-      />
-      <body className={`font-sans ${inter.variable}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-        <div className="h-screen grid grid-rows-[auto,1fr]">
-          <TopNav />
-          <main className="overflow-y-scroll">{children}</main>
-        </div>
-        {modal}
-        <div id="modal-root" />
-        <Toaster />
-        </ThemeProvider>
-      </body>
-    </html>
-    </CSPostHogProvider>
+        <html lang="en">
+          <NextSSRPlugin 
+            routerConfig={extractRouterConfig(ourFileRouter)}
+          />
+          <body className={`font-sans ${inter.variable}`}>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
+          >
+            <div className="h-screen grid grid-rows-[auto,1fr]">
+              <TopNav />
+              <main className="overflow-y-scroll">{children}</main>
+            </div>
+            {modal}
+            <div id="modal-root" />
+            <Toaster />
+            </ThemeProvider>
+          </body>
+        </html>
+      </CSPostHogProvider>
     </ClerkProvider>
   );
 }
