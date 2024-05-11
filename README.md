@@ -20,6 +20,7 @@
 
 ## Additional Challenges
 - [ ] Fix page layout for images of different resolutions
+- [ ] Fix page reload after delete
 - [ ] "Selecting" images on the gallery page (zustand)
 - [ ] "inifinte scroll"
 - [ ] Folders/ablums (database)
